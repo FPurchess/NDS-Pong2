@@ -1,2 +1,4 @@
 build/*
 *.nds
+*.arm9
+*.elf

@@ -22,9 +22,9 @@ int main(void) {
 
 	while(1) {
 		swiWaitForVBlank();
-    
+
         //consoleClear();
-	}   
+	}
 
     return 0;
 }

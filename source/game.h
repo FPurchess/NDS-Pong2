@@ -6,6 +6,14 @@
 
 
 /**
+ * @param panel p1
+ * @param panel p2
+ * @param ball b
+ * @return void
+ */
+void initGame(panel p1, panel p2, ball b);
+
+/**
  * @param ball b
  * @return void
  */

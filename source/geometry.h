@@ -21,12 +21,12 @@ typedef box boundingBox;
 // Methods
 
 /**
- * checks two boundingBoxes of collision
+ * checks if box2 collides with box1
  * 
  * @param boundingBox box1
  * @param boundingBox box2
- * @return boolean
+ * @return int 0 no collision, 1-4 clockwise collision
  */
-bool collision(boundingBox box1, boundingBox box2);
+int collision(boundingBox box1, boundingBox box2);
 
 #endif

@@ -1,6 +1,8 @@
 #include <nds.h>
 #include <stdio.h>
 
+#include "panel.h"
+
 #define LCD_W 256
 #define LCD_H 192
 
@@ -8,7 +10,9 @@
 int main(void) {
     int i;
 
-	consoleDemoInit();
+    panel player1;
+	
+    consoleDemoInit();
 
 	videoSetMode(MODE_FB0);
 

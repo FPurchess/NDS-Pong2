@@ -11,15 +11,14 @@ void moveBall(ball *b) {
     b->box.pos.y += b->direction.y;
 
     // horizontal collision
-    if (b->box.pos.x <= 0 || b->box.pos.x >= SCREEN_WIDTH) {
+    if (b->box.pos.x <= 0 || b->box.pos.x + b->box.width >= SCREEN_WIDTH) {
         b->direction.x *= -1;
     }
     
     // vertical collision
-    if (b->box.pos.y <= 0 || b->box.pos.y >= SCREEN_HEIGHT) {
+    if (b->box.pos.y <= 0 || b->box.pos.y + b->box.height >= SCREEN_HEIGHT) {
         b->direction.y *= -1;
     }
-    
 
 }
 

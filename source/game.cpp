@@ -11,28 +11,30 @@
  */
 void initGame(panel *p1, panel *p2, ball *b) {
     // Ball
-    b->speed = 2;
+    b->speed = 1;
     b->box.pos.x = 100;
     b->box.pos.y = 30;
-    b->box.width = 3;
-    b->box.height = 3;
-    b->color = RGB15(10,10,10);
+    b->box.width = 5;
+    b->box.height = 5;
+    b->color = RGB15(31,31,10);
+    b->direction.x = b->speed;
+    b->direction.y = b->speed;
 
     // Panel 1
     p1->box.pos.x = 5;
     p1->box.pos.y = 20;
     p1->box.width = 5;
-    p1->box.height = 20;
+    p1->box.height = 40;
     p1->speed = 2;
-    p1->color = RGB15(10,10,10);
+    p1->color = RGB15(20,0,0);
 
     // Panel 2
     p2->box.pos.x = SCREEN_WIDTH - 5 - 5; // screen width - panel width - offset
     p2->box.pos.y = 20;
     p2->box.width = 5;
-    p2->box.height = 20;
+    p2->box.height = 40;
     p2->speed = 2;
-    p2->color = RGB15(10,10,10);
+    p2->color = RGB15(20,0,0);
 }
 
 /**

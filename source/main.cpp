@@ -33,13 +33,13 @@ int main(void) {
         drawObject(player2.box, COLOR_BLACK);
         drawObject(gameBall.box, COLOR_BLACK);
 
-        drawObject(player1.box, player1.color);
-        drawObject(player2.box, player2.color);
-        drawObject(gameBall.box, gameBall.color);
-
         movePanelOne(&player1, 0);
         movePanelTwo(&player2, 0);
         moveBall(&gameBall);
+
+        drawObject(player1.box, player1.color);
+        drawObject(player2.box, player2.color);
+        drawObject(gameBall.box, gameBall.color);
 
         swiWaitForVBlank();
 

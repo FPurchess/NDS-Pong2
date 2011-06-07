@@ -6,7 +6,6 @@
 #include "stats.h"
 #include "game.h"
 
-#define ERR_INIT_SBOX_FAILED 1
 #define COLOR_BLACK 0
 
 int main(void) {
@@ -16,7 +15,7 @@ int main(void) {
     
     scoreBox sBox;
     if(!initScoreBox(&sBox))
-        exit(ERR_INIT_SBOX_FAILED);
+        exit(1);
 
     int score[2] = {1,2};
     

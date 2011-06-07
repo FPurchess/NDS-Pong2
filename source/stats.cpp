@@ -46,7 +46,11 @@ void changeScore(scoreBox *scoreBox, int score[2]) {
  * draws a given scoreBox
  */
 void drawStats(scoreBox *scoreBox) {
-    
+    if(scoreBox == NULL)
+        return;
+#ifdef STATS_CONSOLE
+    printf("%d : %d", scoreBox.score[0], scoreBox.score[1]);
+#endif
 }
 
 void drawColon(boundingBox box) {

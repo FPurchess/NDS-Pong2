@@ -6,6 +6,8 @@
 #include "stats.h"
 #include "game.h"
 
+#define STATS_CONSOLE
+
 #define COLOR_BLACK 0
 
 int main(void) {
@@ -20,8 +22,10 @@ int main(void) {
     int score[2] = {1,2};
     
     setScore(&sBox, score);
-
-//    consoleDemoInit();
+    
+#ifdef STATS_CONSOLE
+    consoleDemoInit();
+#endif
     initGame(&player1, &player2, &gameBall);
 
 	videoSetMode(MODE_FB0);

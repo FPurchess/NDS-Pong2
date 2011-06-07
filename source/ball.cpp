@@ -6,7 +6,7 @@
  * @param ball b
  * @return void
  */
-void moveBall(ball b) {
+void moveBall(ball *b) {
     b.box.pos.x += b.direction.x;
     b.box.pos.y += b.direction.y;
 

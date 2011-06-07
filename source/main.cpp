@@ -29,6 +29,7 @@ int main(void) {
 
         movePanelOne(&player1, 0);
         movePanelTwo(&player2, 0);
+        moveBall(&gameBall);
 
         swiWaitForVBlank();
 

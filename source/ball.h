@@ -22,7 +22,7 @@ typedef movingObject ball;
  * @param ball b
  * @return void
  */
-void moveBall(ball b);
+void moveBall(ball *b);
 
 
 #endif

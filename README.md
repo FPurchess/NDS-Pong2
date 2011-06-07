@@ -2,5 +2,5 @@
 This is a homebrew pong-clone for Nintendo DS
 
 ## Authors ##
-Tobias Dreyer
+Tobias Dreyer   
 Florian Purchess

@@ -9,6 +9,8 @@
 #define COLOR_BLACK 0
 
 int main(void) {
+    int held;
+
     panel player1;
     panel player2;
     ball gameBall;
@@ -21,20 +23,26 @@ int main(void) {
     
     setScore(&sBox, score);
 
-//    consoleDemoInit();
+    consoleDemoInit();
     initGame(&player1, &player2, &gameBall);
 
-	videoSetMode(MODE_FB0);
+    irqInit();
+    irqEnable(IRQ_VBLANK);
+
+    videoSetMode(MODE_FB0);
 	vramSetBankA(VRAM_A_LCD);
 
 	printf("%d : %d",sBox.score[0],sBox.score[1]);
 	while(1) {
+        scanKeys();
+        held = keysHeld();
+
         drawObject(player1.box, COLOR_BLACK);
         drawObject(player2.box, COLOR_BLACK);
         drawObject(gameBall.box, COLOR_BLACK);
 
-        movePanelOne(&player1, 0);
-        movePanelTwo(&player2, 0);
+        movePanelOne(&player1, held);
+        movePanelTwo(&player2, held);
         moveBall(&gameBall);
 
         drawObject(player1.box, player1.color);

@@ -11,7 +11,7 @@
  */
 void initGame(panel *p1, panel *p2, ball *b) {
     // Ball
-    b->speed = 1;
+    b->speed = 2;
     b->box.pos.x = 100;
     b->box.pos.y = 30;
     b->box.width = 5;
@@ -43,7 +43,10 @@ void initGame(panel *p1, panel *p2, ball *b) {
  * @return void
  */
 void movePanelOne(panel *p, int key) {
-
+    if (key & KEY_UP)
+        p->box.pos.y -= 1;
+    if (key & KEY_DOWN)
+        p->box.pos.y += 1;
 }
 
 /**
@@ -52,7 +55,10 @@ void movePanelOne(panel *p, int key) {
  * @return void
  */
 void movePanelTwo(panel *p, int key) {
-
+    if (key & KEY_A)
+        p->box.pos.y -= 1;
+    if (key & KEY_B)
+        p->box.pos.y += 1;
 }
 
 /**

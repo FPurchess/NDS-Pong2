@@ -44,9 +44,14 @@ void initGame(panel *p1, panel *p2, ball *b) {
  */
 void movePanelOne(panel *p, int key) {
     if (key & KEY_UP)
-        p->box.pos.y -= 1;
+        p->box.pos.y -= p->speed;
     if (key & KEY_DOWN)
-        p->box.pos.y += 1;
+        p->box.pos.y += p->speed;
+
+    if (p->box.pos.y < 0)
+        p->box.pos.y = 0;
+    if (p->box.pos.y > SCREEN_HEIGHT)
+        p->box.pos.y = SCREEN_HEIGHT;
 }
 
 /**
@@ -56,9 +61,9 @@ void movePanelOne(panel *p, int key) {
  */
 void movePanelTwo(panel *p, int key) {
     if (key & KEY_A)
-        p->box.pos.y -= 1;
+        p->box.pos.y -= p->speed;
     if (key & KEY_B)
-        p->box.pos.y += 1;
+        p->box.pos.y += p->speed;
 }
 
 /**

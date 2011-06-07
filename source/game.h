@@ -6,26 +6,12 @@
 
 
 /**
- * @param panel p1
- * @param panel p2
+ * @param player p1
+ * @param player p2
  * @param ball b
  * @return void
  */
-void initGame(panel *p1, panel *p2, ball *b);
-
-/**
- * @param panel p
- * @param int key
- * @return void
- */
-void movePanelOne(panel *p, int key);
-
-/**
- * @param panel p
- * @param int key
- * @return void
- */
-void movePanelTwo(panel *p, int key);
+void initGame(player *p1, player *p2, ball *b);
 
 /**
  * @param boundingBox box

@@ -4,12 +4,12 @@
 
 
 /**
- * @param panel p1
- * @param panel p2
+ * @param player p1
+ * @param player p2
  * @param ball b
  * @return void
  */
-void initGame(panel *p1, panel *p2, ball *b) {
+void initGame(player *p1, player *p2, ball *b) {
     // Ball
     b->speed = 2;
     b->box.pos.x = 100;
@@ -27,6 +27,8 @@ void initGame(panel *p1, panel *p2, ball *b) {
     p1->box.height = 40;
     p1->speed = 2;
     p1->color = RGB15(20,0,0);
+    p1->keyUp = KEY_UP;
+    p1->keyDOwn = KEY_DOWN;
 
     // Panel 2
     p2->box.pos.x = SCREEN_WIDTH - 5 - 5; // screen width - panel width - offset
@@ -35,35 +37,8 @@ void initGame(panel *p1, panel *p2, ball *b) {
     p2->box.height = 40;
     p2->speed = 2;
     p2->color = RGB15(20,0,0);
-}
-
-/**
- * @param panel p
- * @param int key
- * @return void
- */
-void movePanelOne(panel *p, int key) {
-    if (key & KEY_UP)
-        p->box.pos.y -= p->speed;
-    if (key & KEY_DOWN)
-        p->box.pos.y += p->speed;
-
-    if (p->box.pos.y < 0)
-        p->box.pos.y = 0;
-    if (p->box.pos.y > SCREEN_HEIGHT)
-        p->box.pos.y = SCREEN_HEIGHT;
-}
-
-/**
- * @param panel p
- * @param int key
- * @return void
- */
-void movePanelTwo(panel *p, int key) {
-    if (key & KEY_A)
-        p->box.pos.y -= p->speed;
-    if (key & KEY_B)
-        p->box.pos.y += p->speed;
+    p2->keyUp = KEY_A;
+    p2->keyDOwn = KEY_B;
 }
 
 /**

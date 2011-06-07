@@ -13,8 +13,8 @@
 int main(void) {
     int held;
 
-    panel player1;
-    panel player2;
+    player player1;
+    player player2;
     ball gameBall;
     
     scoreBox sBox;
@@ -45,8 +45,8 @@ int main(void) {
         drawObject(player2.box, COLOR_BLACK);
         drawObject(gameBall.box, COLOR_BLACK);
 
-        movePanelOne(&player1, held);
-        movePanelTwo(&player2, held);
+        movePanel(&player1, held);
+        movePanel(&player2, held);
         moveBall(&gameBall);
 
         drawObject(player1.box, player1.color);

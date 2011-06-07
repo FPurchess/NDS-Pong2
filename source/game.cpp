@@ -28,7 +28,7 @@ void initGame(player *p1, player *p2, ball *b) {
     p1->speed = 2;
     p1->color = RGB15(20,0,0);
     p1->keyUp = KEY_UP;
-    p1->keyDOwn = KEY_DOWN;
+    p1->keyDown = KEY_DOWN;
 
     // Panel 2
     p2->box.pos.x = SCREEN_WIDTH - 5 - 5; // screen width - panel width - offset
@@ -38,7 +38,7 @@ void initGame(player *p1, player *p2, ball *b) {
     p2->speed = 2;
     p2->color = RGB15(20,0,0);
     p2->keyUp = KEY_A;
-    p2->keyDOwn = KEY_B;
+    p2->keyDown = KEY_B;
 }
 
 /**

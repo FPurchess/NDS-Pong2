@@ -10,10 +10,12 @@
  */
 int collision(boundingBox box1, boundingBox box2) {
     // top
-    if (box1.pos.x <= box2.pos.x && box1.pos.x + box1.height >= box2.pos.x) {
-        if (box1.pos.y <= box2.pos.y && box1.pos.y + box1.height >= box2.pos.y + box2.height) {
-            return 1;
-        }
+    position pos1 = box1.pos, pos2 = box2.pos;
+    if (pos1.x <= pos2.x
+     && pos1.x + box1.width >= pos2.x
+     && pos1.y <= pos2.y
+     && pos1.y + box1.height >= pos2.y + box2.height) {
+        return 1;
     }
     
     // right

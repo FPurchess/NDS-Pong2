@@ -11,32 +11,27 @@
  * @param ball b
  * @return void
  */
-void initGame(panel p1, panel p2, ball b);
-
-/**
- * @param ball b
- * @return void
- */
-void moveBall(ball b);
+void initGame(panel *p1, panel *p2, ball *b);
 
 /**
  * @param panel p
  * @param int key
  * @return void
  */
-void movePanelOne(panel p, int key);
+void movePanelOne(panel *p, int key);
 
 /**
  * @param panel p
  * @param int key
  * @return void
  */
-void movePanelTwo(panel p, int key);
+void movePanelTwo(panel *p, int key);
 
 /**
  * @param boundingBox box
  * @return void
  */
-void drawObject(boundingBox box);
+void drawObject(boundingBox box, int color);
+
 
 #endif

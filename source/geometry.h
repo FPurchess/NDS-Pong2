@@ -1,6 +1,7 @@
 #ifndef H_GEOMETRY
 #define H_GEOMETRY
 
+
 // Types
 
 struct point {
@@ -17,6 +18,7 @@ struct box {
 };
 
 typedef box boundingBox;
+
 
 // Methods
 

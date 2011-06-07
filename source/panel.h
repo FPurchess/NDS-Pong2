@@ -4,7 +4,9 @@
 #include "geometry.h"
 
 struct panel {
-    boundingBox pos;
+    boundingBox box;
+    int color;
+    int speed;
 };
 
 

@@ -2,3 +2,5 @@ build/*
 *.nds
 *.arm9
 *.elf
+.idea/*
+*.iml

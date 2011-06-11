@@ -2,6 +2,7 @@
 #define H_BALL
 
 #include "geometry.h"
+#include "panel.h"
 
 
 // Types
@@ -22,7 +23,7 @@ typedef movingObject ball;
  * @param ball b
  * @return void
  */
-void moveBall(ball *b);
+void moveBall(ball *b, panel *p1, panel *p2);
 
 
 #endif

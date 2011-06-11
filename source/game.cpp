@@ -1,6 +1,6 @@
-#include "game.h"
 #include <nds.h>
-#include <stdio.h>
+
+#include "game.h"
 
 
 /**
@@ -11,7 +11,7 @@
  */
 void initGame(player *p1, player *p2, ball *b) {
     // Ball
-    b->speed = 2;
+    b->speed = 1;
     b->box.pos.x = 100;
     b->box.pos.y = 30;
     b->box.width = 5;

@@ -41,16 +41,16 @@ int main(void) {
         scanKeys();
         held = keysHeld();
 
-        consoleClear();
+        //consoleClear();
         drawObject(player1.box, COLOR_BLACK);
         drawObject(player2.box, COLOR_BLACK);
         drawObject(gameBall.box, COLOR_BLACK);
 
         movePanel(&player1, held);
         movePanel(&player2, held);
-        moveBall(&gameBall);
+        moveBall(&gameBall, &player1, &player2);
 
-	    printf("%d : %d",sBox.score[0],sBox.score[1]);
+	    //printf("%d : %d",sBox.score[0],sBox.score[1]);
         
         drawObject(player1.box, player1.color);
         drawObject(player2.box, player2.color);

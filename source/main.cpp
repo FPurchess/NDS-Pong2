@@ -1,15 +1,13 @@
 #include <nds.h>
 #include <stdio.h>
 
+#define STATS_CONSOLE
+
 // Includes
 #include "ball.h"
 #include "player.h"
 #include "stats.h"
 
-
-#define STATS_CONSOLE
-
-#define COLOR_BLACK 0
 
 int main(void) {
     int held;
@@ -17,26 +15,18 @@ int main(void) {
     player player1;
     player player2;
     ball gameBall;
-   /* 
     scoreBox sBox;
-    int score[2] = {0,0};
-    setScore(&sBox, score);
-    
-#ifdef STATS_CONSOLE
-    consoleDemoInit();
-#endif
-*/
 
     // Initalize Graphics Engine
-    videoSetMode( MODE_0_2D );
+    videoSetMode(MODE_0_2D);
 	vramSetBankA(VRAM_A_LCD);
     
     oamInit(&oamMain, SpriteMapping_1D_128, false);
     
-    //initScoreBox(&sBox);
-	initBall(&gameBall);
+    initScoreBox(&sBox);
     initPlayer1(&player1);
     initPlayer2(&player2);
+	initBall(&gameBall);
 
     // Initalize IRQ
     irqInit();
@@ -60,8 +50,6 @@ int main(void) {
 
         swiWaitForVBlank();
         oamUpdate(&oamMain);
-        
-        for(held=0;held<10000000;held++){}
 	}
 
     return 0;

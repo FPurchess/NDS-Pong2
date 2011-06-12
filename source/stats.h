@@ -3,15 +3,15 @@
 
 #include "geometry.h"
 
-struct stats {
+#define STATS_CONSOLE
+
+typedef struct {
     int score[2];
     boundingBox box;
     int color;
-};
+} scoreBox;
 
-typedef stats scoreBox;
-
-bool initScoreBox(scoreBox *scoreBox);
+void initScoreBox(scoreBox *scoreBox);
 void setScore(scoreBox *scoreBox, int score[2]);
 void changeScore(scoreBox scoreBox, int score[2]);
 void drawStats(scoreBox scoreBox);

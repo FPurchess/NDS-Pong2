@@ -1,16 +1,15 @@
 #include <stdio.h>
+#include <nds.h>
 
 #include "stats.h"
 
-bool initScoreBox(scoreBox *sBox) {
-    if(sBox == NULL)
-        return false;
-    
-    // initialize score
-    int iScore[2] = {0,0};
-    setScore(sBox, iScore);
-    
-    return true;
+void initScoreBox(scoreBox *sBox) {
+    #ifdef STATS_CONSOLE
+    consoleDemoInit();
+    #endif
+
+    sBox->score[0] = 0; 
+    sBox->score[1] = 0; 
 }
 
 /**
@@ -49,7 +48,7 @@ void drawStats(scoreBox *scoreBox) {
     if(scoreBox == NULL)
         return;
 #ifdef STATS_CONSOLE
-    printf("%d : %d", scoreBox.score[0], scoreBox.score[1]);
+    printf("%d : %d", scoreBox->score[0], scoreBox->score[1]);
 #endif
 }
 

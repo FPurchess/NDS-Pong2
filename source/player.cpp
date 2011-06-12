@@ -46,7 +46,7 @@ void initPlayer2(player *p2) {
 
 
 void drawPlayer(player *p) {
-    oamSet( &oamMain, 0, p->box.pos.y + p->sprite_offy, p->box.pos.x + p->sprite_offx, 0, 0,
+    oamSet( &oamMain, 1, p->box.pos.y + p->sprite_offy, p->box.pos.x + p->sprite_offx, 0, 0,
             p->sprite_size, p->sprite_format, p->sprite_gfx,
             -1,false,false,false,false,false);
 }

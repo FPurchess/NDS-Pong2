@@ -1,15 +1,28 @@
 #include <nds.h>
 #include "player.h"
 
+// Sprites
+#include "spritePlayer.h"
+
 
 void initPlayer1(player *p1){
     p1->box.pos.x = 5;
     p1->box.pos.y = 20;
-    p1->box.width = 5;
-    p1->box.height = 40;
+    p1->box.width = 10;
+    p1->box.height = 62;
     p1->speed = 2;
     p1->keyUp = KEY_UP;
     p1->keyDown = KEY_DOWN;
+
+    p1->sprite_offx = -10;
+    p1->sprite_offy = -2;
+
+    p1->sprite_size = SpriteSize_64x64;
+    p1->sprite_format = SpriteColorFormat_256Color;
+    p1->sprite_gfx = oamAllocateGfx(&oamMain, p1->sprite_size, p1->sprite_format);
+
+    dmaCopy(spritePlayerPal, SPRITE_PALETTE, 512);
+    dmaCopy(spritePlayerTiles, p1->sprite_gfx, spritePlayerTilesLen);
 }
 
 void initPlayer2(player *p2) {
@@ -20,6 +33,15 @@ void initPlayer2(player *p2) {
     p2->speed = 2;
     p2->keyUp = KEY_A;
     p2->keyDown = KEY_B;
+
+    p2->sprite_offx = -10;
+    p2->sprite_offy = -2;
+
+    p2->sprite_size = SpriteSize_64x64;
+    p2->sprite_format = SpriteColorFormat_256Color;
+    p2->sprite_gfx = oamAllocateGfx(&oamMain, p2->sprite_size, p2->sprite_format);
+
+    dmaCopy(spritePlayerTiles,p2->sprite_gfx, spritePlayerTilesLen);
 }
 
 

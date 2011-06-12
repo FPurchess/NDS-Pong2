@@ -25,6 +25,7 @@ void initBall(ball *b) {
     b->sprite_format = SpriteColorFormat_256Color;
     b->sprite_gfx = oamAllocateGfx(&oamMain, b->sprite_size, b->sprite_format);
 
+    dmaCopy(spriteBallPal, SPRITE_PALETTE, 512);
     dmaCopy(spriteBallTiles,b->sprite_gfx, spriteBallTilesLen);
 }
 

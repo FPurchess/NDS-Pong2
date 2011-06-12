@@ -2,14 +2,9 @@
 #include <stdio.h>
 
 // Includes
-
-#include "player.h"
 #include "ball.h"
+#include "player.h"
 #include "stats.h"
-
-// Sprites
-
-#include "spriteBall.h"
 
 
 #define STATS_CONSOLE
@@ -42,8 +37,6 @@ int main(void) {
 	initBall(&gameBall);
     initPlayer1(&player1);
     initPlayer2(&player2);
-
-    dmaCopy(spriteBallPal, SPRITE_PALETTE, 512);
 
     // Initalize IRQ
     irqInit();

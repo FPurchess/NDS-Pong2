@@ -1,39 +1,40 @@
-#ifndef H_BALL
-#define H_BALL
+#ifndef H_PANEL
+#define H_PANEL
 
+#include <nds.h>
 #include "geometry.h"
-#include "player.h"
 
 
 // Types
 
 typedef struct {
     boundingBox box;
-    
     int speed;
-    position direction;
-    
+    int keyUp;
+    int keyDown;
+
     int sprite_offx;
     int sprite_offy;
     
     SpriteSize sprite_size;
     SpriteColorFormat sprite_format;
     u16* sprite_gfx; 
-} ball;
-
+} player;
 
 
 // Methods
 
-void initBall(ball *b);
+void initPlayer1(player *p1);
 
-void drawBall(ball *b);
+void initPlayer2(player *p2);
+
+void drawPlayer(player *p);
 
 /**
- * @param ball b
+ * @param player p
+ * @param int key
  * @return void
  */
-void moveBall(ball *b, player *p1, player *p2);
-
+void movePlayer(player *p, int key);
 
 #endif

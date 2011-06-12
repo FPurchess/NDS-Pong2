@@ -1,10 +1,9 @@
 #include <nds.h>
 #include <stdio.h>
 
-#include "panel.h"
+#include "player.h"
 #include "ball.h"
 #include "stats.h"
-#include "game.h"
 
 #define STATS_CONSOLE
 
@@ -18,17 +17,12 @@ int main(void) {
     ball gameBall;
     
     scoreBox sBox;
-    if(!initScoreBox(&sBox))
-        exit(1);
-
-    int score[2] = {1,2};
-    
+    int score[2] = {0,0};
     setScore(&sBox, score);
     
 #ifdef STATS_CONSOLE
     consoleDemoInit();
 #endif
-    initGame(&player1, &player2, &gameBall);
 
     irqInit();
     irqEnable(IRQ_VBLANK);
@@ -36,25 +30,26 @@ int main(void) {
     videoSetMode(MODE_FB0);
 	vramSetBankA(VRAM_A_LCD);
 
-	printf("%d : %d",sBox.score[0],sBox.score[1]);
+    initScoreBox(&sBox);
+	initBall(&gameBall);
+    initPlayer1(&player1);
+    initPlayer2(&player2);
+
 	while(1) {
         scanKeys();
         held = keysHeld();
 
         //consoleClear();
-        drawObject(player1.box, COLOR_BLACK);
-        drawObject(player2.box, COLOR_BLACK);
-        drawObject(gameBall.box, COLOR_BLACK);
-
-        movePanel(&player1, held);
-        movePanel(&player2, held);
+        
+        movePlayer(&player1, held);
+        movePlayer(&player2, held);
         moveBall(&gameBall, &player1, &player2);
 
 	    //printf("%d : %d",sBox.score[0],sBox.score[1]);
         
-        drawObject(player1.box, player1.color);
-        drawObject(player2.box, player2.color);
-        drawObject(gameBall.box, gameBall.color);
+        drawPlayer(&player1);
+        drawPlayer(&player2);
+        drawBall(&gameBall);
 
         swiWaitForVBlank();
 	}

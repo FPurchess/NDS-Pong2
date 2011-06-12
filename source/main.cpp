@@ -1,9 +1,16 @@
 #include <nds.h>
 #include <stdio.h>
 
+// Includes
+
 #include "player.h"
 #include "ball.h"
 #include "stats.h"
+
+// Sprites
+
+//#include <sprite_ball.h>
+
 
 #define STATS_CONSOLE
 
@@ -15,7 +22,7 @@ int main(void) {
     player player1;
     player player2;
     ball gameBall;
-    
+   /* 
     scoreBox sBox;
     int score[2] = {0,0};
     setScore(&sBox, score);
@@ -23,14 +30,16 @@ int main(void) {
 #ifdef STATS_CONSOLE
     consoleDemoInit();
 #endif
-
+*/
+    videoSetMode( MODE_0_2D );
+	vramSetBankA(VRAM_A_LCD);
+    
     irqInit();
     irqEnable(IRQ_VBLANK);
 
-    videoSetMode(MODE_FB0);
-	vramSetBankA(VRAM_A_LCD);
-
-    initScoreBox(&sBox);
+    oamInit(&oamMain, SpriteMapping_1D_128, false);
+    
+    //initScoreBox(&sBox);
 	initBall(&gameBall);
     initPlayer1(&player1);
     initPlayer2(&player2);

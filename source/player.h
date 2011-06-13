@@ -16,6 +16,8 @@ typedef struct {
     int sprite_offx;
     int sprite_offy;
     
+    int layer;
+
     SpriteSize sprite_size;
     SpriteColorFormat sprite_format;
     u16* sprite_gfx; 

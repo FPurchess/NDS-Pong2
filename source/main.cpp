@@ -1,9 +1,11 @@
 #include <nds.h>
+#include <maxmod9.h>
 #include <stdio.h>
 
 #define STATS_CONSOLE
 
 // Includes
+#include "audio.h"
 #include "ball.h"
 #include "player.h"
 #include "stats.h"
@@ -22,7 +24,11 @@ int main(void) {
 	vramSetBankA(VRAM_A_LCD);
     
     oamInit(&oamMain, SpriteMapping_1D_128, false);
-    
+
+    // Init Audio
+    initAudio();
+
+    // Init Game-Elements
     initScoreBox(&sBox);
     initPlayer1(&player1);
     initPlayer2(&player2);
@@ -42,8 +48,6 @@ int main(void) {
         movePlayer(&player2, held);
         moveBall(&gameBall, &player1, &player2);
 
-	    //printf("%d : %d",sBox.score[0],sBox.score[1]);
-        
         drawPlayer(&player1);
         drawPlayer(&player2);
         drawBall(&gameBall);

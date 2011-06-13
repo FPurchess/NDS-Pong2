@@ -21,6 +21,7 @@ SOURCES		:=	source
 DATA		:=	data  
 INCLUDES	:=	include
 SPRITES		:=  sprites
+MUSIC       :=  audio
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -70,6 +71,8 @@ CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
 BINFILES	:=	$(foreach dir,$(DATA),$(notdir $(wildcard $(dir)/*.*)))
 SPRITE_FILES   :=  $(foreach dir, $(SPRITES),$(notdir $(wildcard $(dir)/*.png)))
+
+export AUDIOFILES	:=	$(foreach dir,$(notdir $(wildcard $(MUSIC)/*.*)),$(CURDIR)/$(MUSIC)/$(dir))
 
 #---------------------------------------------------------------------------------
 # use CXX for linking C++ projects, CC for standard C
@@ -121,6 +124,13 @@ $(OUTPUT).elf	:	$(OFILES)
 %.s %.h : %.png
 	grit $< -ff../sprites/sprite.grit -o$*
 #---------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------
+# rule to build soundbank from music files
+#---------------------------------------------------------------------------------
+soundbank.bin : $(AUDIOFILES)
+#---------------------------------------------------------------------------------
+	@mmutil $^ -d -osoundbank.bin -hsoundbank.h
 
 	
 #---------------------------------------------------------------------------------

@@ -5,8 +5,8 @@
 // Types
 
 struct point {
-    int x;
-    int y;
+    float x;
+    float y;
 };
 
 typedef point position;

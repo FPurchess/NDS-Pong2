@@ -18,7 +18,7 @@
 // Methods
 
 void initBall(ball *b) {
-    b->speed = 1;
+    b->speed = 1.5;
     b->box.pos.x = 100;
     b->box.pos.y = 30;
     b->box.width = 12;
@@ -61,6 +61,27 @@ void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
     } else if (b->box.pos.x + b->box.width >= SCREEN_WIDTH) {
        scoring(0, b, sBox); 
     } else if (intersect(b->box, p1->box) || intersect(b->box, p2->box)) {
+        // calculate relative position to player box, then set direction according to that relative position
+        // if relative position is low (i.e. closer to 0, the ball hit the paddle early),
+        // then it goes back in an acute angle, arriving at the enemy faster
+        // if relative position is high (i.e. closer to 1, the ball hit the paddle late),
+        // then it goes back in an obtuse angle, arriving at the enemy slower
+        float relativePos;
+        if (intersect(b->box, p1->box)) {
+            // player 1
+            relativePos = (b->box.pos.y - p1->box.pos.y) / (p1->box.height);
+        } else {
+            // player 2
+            relativePos = (b->box.pos.y - p2->box.pos.y) / (p2->box.height);
+        }
+        // y is negative, so the ball is flying up: reverse relative position
+        if (b->direction.y < 0) {
+            relativePos = 1 - relativePos;
+        }
+        b->direction.x = 1.2 - relativePos;
+        b->direction.y = 0.2 + relativePos;
+
+        // reverse x direction
         b->direction.x *= -1;
         mmEffect( SFX_PANEL );
         mmEffectEx( &b->sfx_panel );

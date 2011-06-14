@@ -13,7 +13,7 @@
 typedef struct {
     boundingBox box;
     
-    int speed;
+    float speed;
     position direction;
     
     int sprite_offx;

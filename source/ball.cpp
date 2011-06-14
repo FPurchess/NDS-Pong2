@@ -33,9 +33,26 @@ void initBall(ball *b) {
     b->sprite_format = SpriteColorFormat_256Color;
     b->sprite_gfx = oamAllocateGfx(&oamMain, b->sprite_size, b->sprite_format);
 
-    b->sfx_wall = { { SFX_WALL }, 1024, 0, 255, 128 };
-    b->sfx_panel = { { SFX_PANEL }, 1024, 0, 255, 128 };
-    b->sfx_scoring = { { SFX_READY }, 1024, 0, 255, 128 };
+    // SFX_WALL
+    b->sfx_wall.id = SFX_WALL;
+    b->sfx_wall.rate = 1024;
+    b->sfx_wall.handle = 0;
+    b->sfx_wall.volume = 255;
+    b->sfx_wall.panning = 128;
+
+    // SFX_PANEL
+    b->sfx_panel.id = SFX_PANEL;
+    b->sfx_panel.rate = 1024;
+    b->sfx_panel.handle = 0;
+    b->sfx_panel.volume = 255;
+    b->sfx_panel.panning = 128;
+    
+    // SFX_READY
+    b->sfx_scoring.id = SFX_READY;
+    b->sfx_scoring.rate = 1024;
+    b->sfx_scoring.handle = 0;
+    b->sfx_scoring.volume = 255;
+    b->sfx_scoring.panning = 128;
     
     dmaCopy(spriteBallPal, SPRITE_PALETTE, spriteBallPalLen);
     dmaCopy(spriteBallTiles,b->sprite_gfx, spriteBallTilesLen);

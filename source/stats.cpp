@@ -8,37 +8,8 @@ void initScoreBox(scoreBox *sBox) {
     consoleDemoInit();
     #endif
 
-    sBox->score[0] = 0; 
-    sBox->score[1] = 0; 
-}
-
-/**
- * set score to given values
- *
- * @param *scoreBox
- * @param score[2]
- */
-void setScore(scoreBox *scoreBox, int score[2]) {
-    if(scoreBox == NULL
-    || score == NULL)
-        return;
-    scoreBox->score[0] = score[0];
-    scoreBox->score[1] = score[1];
-}
-
-/**
- * change score by given values
- * score may contain negativ values
- *
- * @param *scoreBox
- * @param score
- */
-void changeScore(scoreBox *scoreBox, int score[2]) {
-    if(scoreBox == NULL
-    || score == NULL)
-        return;
-    scoreBox->score[0] += score[0];
-    scoreBox->score[1] += score[1];
+    sBox->score[0] = 0;
+    sBox->score[1] = 0;
 }
 
 /**
@@ -47,15 +18,18 @@ void changeScore(scoreBox *scoreBox, int score[2]) {
 void drawStats(scoreBox *scoreBox) {
     if(scoreBox == NULL)
         return;
-#ifdef STATS_CONSOLE
+    #ifdef STATS_CONSOLE
     printf("%d : %d", scoreBox->score[0], scoreBox->score[1]);
-#endif
+    #endif
 }
 
-void drawColon(boundingBox box) {
-    
-}
-
-void drawNumber(boundingBox box, int number) {
-
+/**
+ * Count a point for one side
+ *
+ * @param scoreBox the score box
+ * @param side the side which gets the point, 0-based
+ */
+void countPoint(scoreBox *scoreBox, int side) {
+    scoreBox->score[side]++;
+    drawStats(scoreBox);
 }

@@ -11,11 +11,26 @@ typedef struct {
     int color;
 } scoreBox;
 
+/**
+ * Initializes the given score box and sets it as the score box for the current game
+ *
+ * @param scoreBox the score box to initialize
+ */
 void initScoreBox(scoreBox *scoreBox);
-void setScore(scoreBox *scoreBox, int score[2]);
-void changeScore(scoreBox scoreBox, int score[2]);
-void drawStats(scoreBox scoreBox);
-void drawColon(boundingBox box);
-void drawNumber(boundingBox box, int number);
+
+/**
+ * Draws the given score box.
+ *
+ * @param scoreBox the score box to redraw
+ */
+void drawStats(scoreBox *scoreBox);
+
+/**
+ * Count a point for one side
+ *
+ * @param scoreBox the score box
+ * @param side the side which gets the point, 0-based
+ */
+void countPoint(scoreBox scoreBox, int side);
 
 #endif

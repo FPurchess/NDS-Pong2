@@ -78,11 +78,14 @@ void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
         if (b->direction.y < 0) {
             relativePos = 1 - relativePos;
         }
-        b->direction.x = 1.2 - relativePos;
+
+        // new x direction, reverse the sign
+        b->direction.x = (b->direction.x > 0) ? -1 : 1;
+        b->direction.x *= 1.2 - relativePos;
+
+        // new y direction
         b->direction.y = 0.2 + relativePos;
 
-        // reverse x direction
-        b->direction.x *= -1;
         mmEffect( SFX_PANEL );
         mmEffectEx( &b->sfx_panel );
     }

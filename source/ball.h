@@ -3,6 +3,7 @@
 
 #include "geometry.h"
 #include "player.h"
+#include "stats.h"
 
 
 // Types
@@ -33,7 +34,8 @@ void drawBall(ball *b);
  * @param ball b
  * @return void
  */
-void moveBall(ball *b, player *p1, player *p2);
+void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox);
 
+void scoring(int player, ball *b, scoreBox *sBox);
 
 #endif

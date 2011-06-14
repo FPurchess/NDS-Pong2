@@ -1,13 +1,17 @@
 #include <nds.h>
+#include <maxmod9.h>
 #include <stdio.h>
 
 #include "ball.h"
 #include "geometry.h"
 #include "player.h"
+#include "stats.h"
 
 // Sprites
 #include "spriteBall.h"
 
+// Audio
+#include "soundbank.h"
 
 void initBall(ball *b) {
     b->speed = 1;
@@ -39,14 +43,18 @@ void drawBall(ball *b) {
  * @param ball b
  * @return void
  */
-void moveBall(ball *b, player *p1, player *p2) {
+void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
     b->box.pos.x += b->direction.x;
     b->box.pos.y += b->direction.y;
 
     // horizontal collision
-    if (b->box.pos.x <= 0 || b->box.pos.x + b->box.width >= SCREEN_WIDTH
-        || intersect(b->box, p1->box) || intersect(b->box, p2->box)) {
+    if (b->box.pos.x <= 0) {
+       scoring(1, b, sBox); 
+    } else if (b->box.pos.x + b->box.width >= SCREEN_WIDTH) {
+       scoring(0, b, sBox); 
+    } else if (intersect(b->box, p1->box) || intersect(b->box, p2->box)) {
         b->direction.x *= -1;
+        mmEffect( SFX_PANEL );
     }
     
     // vertical collision
@@ -56,4 +64,8 @@ void moveBall(ball *b, player *p1, player *p2) {
 
 }
 
-
+void scoring(int player, ball *b, scoreBox *sBox) {
+    b->direction.x *= -1;
+    countPoint(sBox, player);    
+    mmEffect( SFX_READY );
+}

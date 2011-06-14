@@ -42,15 +42,16 @@ int main(void) {
         scanKeys();
         held = keysHeld();
 
-        //consoleClear();
+        consoleClear();
         
         movePlayer(&player1, held);
         movePlayer(&player2, held);
-        moveBall(&gameBall, &player1, &player2);
+        moveBall(&gameBall, &player1, &player2, &sBox);
 
         drawPlayer(&player1);
         drawPlayer(&player2);
         drawBall(&gameBall);
+        drawStats(&sBox);
 
         swiWaitForVBlank();
         oamUpdate(&oamMain);

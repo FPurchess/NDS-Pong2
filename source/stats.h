@@ -31,6 +31,6 @@ void drawStats(scoreBox *scoreBox);
  * @param scoreBox the score box
  * @param side the side which gets the point, 0-based
  */
-void countPoint(scoreBox scoreBox, int side);
+void countPoint(scoreBox *scoreBox, int side);
 
 #endif

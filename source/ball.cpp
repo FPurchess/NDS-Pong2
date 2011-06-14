@@ -81,7 +81,7 @@ void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
 
         // new x direction, reverse the sign
         b->direction.x = (b->direction.x > 0) ? -1 : 1;
-        b->direction.x *= 1.2 - relativePos;
+        b->direction.x *= 1.4 - relativePos;
 
         // new y direction
         b->direction.y = 0.2 + relativePos;
@@ -102,7 +102,8 @@ void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
 void scoring(int player, ball *b, scoreBox *sBox) {
     b->box.pos.x = SCREEN_WIDTH / 2;
     b->box.pos.y = SCREEN_HEIGHT / 2;
-    b->direction.x *= -1;
+    b->direction.x = (b->direction.x > 0) ? -1 : 1;
+    b->direction.y = 1;
     
     countPoint(sBox, player);    
     

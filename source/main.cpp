@@ -19,10 +19,12 @@ int main(void) {
     ball gameBall;
     scoreBox sBox;
 
+    lcdSwap();
+
     // Initalize Graphics Engine
-    videoSetMode(MODE_0_2D);
-	vramSetBankA(VRAM_A_LCD);
-    
+    videoSetMode(MODE_0_2D | DISPLAY_BG2_ACTIVE);
+	vramSetMainBanks(VRAM_A_MAIN_SPRITE, VRAM_B_LCD, VRAM_C_LCD, VRAM_D_LCD);
+
     oamInit(&oamMain, SpriteMapping_1D_128, false);
 
     // Init Audio
@@ -30,9 +32,9 @@ int main(void) {
 
     // Init Game-Elements
     initScoreBox(&sBox);
+	initBall(&gameBall);
     initPlayer1(&player1);
     initPlayer2(&player2);
-	initBall(&gameBall);
 
     // Initalize IRQ
     irqInit();

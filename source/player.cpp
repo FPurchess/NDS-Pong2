@@ -18,13 +18,13 @@ void initPlayer1(player *p1){
     p1->sprite_offx = -27;
     p1->sprite_offy = -2;
 
-    p1->layer = 2;
+    p1->layer = 1;
 
     p1->sprite_size = SpriteSize_64x64;
     p1->sprite_format = SpriteColorFormat_256Color;
     p1->sprite_gfx = oamAllocateGfx(&oamMain, p1->sprite_size, p1->sprite_format);
 
-    dmaCopy(spritePlayer1Pal, SPRITE_PALETTE, 512);
+    dmaCopy(spritePlayer1Pal, SPRITE_PALETTE, spritePlayer1PalLen);
     dmaCopy(spritePlayer1Tiles, p1->sprite_gfx, spritePlayer1TilesLen);
 }
 
@@ -40,7 +40,7 @@ void initPlayer2(player *p2) {
     p2->sprite_offx = -27;
     p2->sprite_offy = -2;
 
-    p2->layer = 3;
+    p2->layer = 2;
 
     p2->sprite_size = SpriteSize_64x64;
     p2->sprite_format = SpriteColorFormat_256Color;
@@ -52,9 +52,9 @@ void initPlayer2(player *p2) {
 
 
 void drawPlayer(player *p) {
-    oamSet( &oamMain, p->layer, p->box.pos.x + p->sprite_offx, p->box.pos.y + p->sprite_offy, 1, 0,
+    oamSet( &oamMain, p->layer, p->box.pos.x + p->sprite_offx, p->box.pos.y + p->sprite_offy, p->layer, -1,
             p->sprite_size, p->sprite_format, p->sprite_gfx,
-            -1,false,false,false,false,false);
+            0,false,false,false,false,false);
 }
 
 /**

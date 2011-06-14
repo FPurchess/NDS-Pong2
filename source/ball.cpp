@@ -37,12 +37,12 @@ void initBall(ball *b) {
     b->sfx_panel = { { SFX_PANEL }, 1024, 0, 255, 128 };
     b->sfx_scoring = { { SFX_READY }, 1024, 0, 255, 128 };
     
-    dmaCopy(spriteBallPal, SPRITE_PALETTE, 512);
+    dmaCopy(spriteBallPal, SPRITE_PALETTE, spriteBallPalLen);
     dmaCopy(spriteBallTiles,b->sprite_gfx, spriteBallTilesLen);
 }
 
 void drawBall(ball *b) {
-    oamSet( &oamMain, 0, b->box.pos.x + b->sprite_offx, b->box.pos.y + b->sprite_offy, 0, 0,
+    oamSet( &oamMain, 0, b->box.pos.x + b->sprite_offx, b->box.pos.y + b->sprite_offy, 0, 1,
             b->sprite_size, b->sprite_format, b->sprite_gfx,
             -1,false,false,false,false,false);
 }

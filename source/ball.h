@@ -1,6 +1,8 @@
 #ifndef H_BALL
 #define H_BALL
 
+#include <maxmod9.h>
+
 #include "geometry.h"
 #include "player.h"
 #include "stats.h"
@@ -20,6 +22,10 @@ typedef struct {
     SpriteSize sprite_size;
     SpriteColorFormat sprite_format;
     u16* sprite_gfx; 
+
+    mm_sound_effect sfx_wall;
+    mm_sound_effect sfx_panel;
+    mm_sound_effect sfx_scoring;
 } ball;
 
 

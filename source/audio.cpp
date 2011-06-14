@@ -12,11 +12,12 @@ void initAudio(void) {
 	// load background-music
 	mmLoad( MOD_BGMUSIC );
 
-	// @TODO: load sound effects
+	// load sound effects
     mmLoadEffect( SFX_PANEL );
     mmLoadEffect( SFX_READY );
     mmLoadEffect( SFX_WALL );
 
 	// Start playing module
+    mmSetModuleVolume( 255 );
 	mmStart( MOD_BGMUSIC, MM_PLAY_LOOP );
 }

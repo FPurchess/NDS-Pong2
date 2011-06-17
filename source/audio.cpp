@@ -6,9 +6,11 @@
 #include "soundbank_bin.h"
 
 
-void initAudio(void) {
+// Methods
+
+void initAudio() {
     mmInitDefaultMem((mm_addr)soundbank_bin);
-	
+
 	// load background-music
 	mmLoad( MOD_BGMUSIC );
 

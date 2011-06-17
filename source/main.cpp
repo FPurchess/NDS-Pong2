@@ -45,7 +45,7 @@ int main(void) {
     initSprites(oam, spriteInfo);
 
     // Init Audio
-    //initAudio();
+    initAudio();
 
     // Init Game-Elements
     initScoreBox(&sBox);

@@ -4,6 +4,6 @@
 
 // Methods
 
-void initAudio(void);
+void initAudio();
 
 #endif

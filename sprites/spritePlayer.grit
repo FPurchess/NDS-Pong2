@@ -5,7 +5,10 @@
 -p
 
 # Tile the image
--gt000000
+-gt
+
+# transparent color is white
+-gT ffffff
 
 # Set the bit depth to 4 (16 colors)
 -gB4

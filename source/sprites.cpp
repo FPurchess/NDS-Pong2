@@ -108,6 +108,109 @@ void initSprites(OAMTable * oam, SpriteInfo *spriteInfo) {
     ball->priority = OBJPRIORITY_0;
     ball->palette = ballInfo->oamId;
 
+    /*******************************************/
+
+    /* Create the player 1 sprite. */
+    static const int PLAYER1_OAM_ID = 1;
+    SpriteInfo * playerInfo1 = &spriteInfo[PLAYER1_OAM_ID];
+    SpriteEntry * player1 = &oam->oamBuffer[PLAYER1_OAM_ID];
+
+    /* Initialize shuttleInfo */
+    playerInfo1->oamId = PLAYER1_OAM_ID;
+    playerInfo1->width = 64;
+    playerInfo1->height = 64;
+    playerInfo1->angle = 0;
+    playerInfo1->entry = player1;
+
+    /*
+     *  Configure attribute 0. 
+     *
+     *  OBJCOLOR_16 will make a 16-color sprite. We specify that we want an
+     *  affine sprite (via isRotateScale) here because we would like to rotate
+     *  the ship.
+     */
+    player1->x = 10;
+    player1->y = 10;
+    player1->isRotateScale = false;
+    player1->isSizeDouble = false;
+    player1->blendMode = OBJMODE_NORMAL;
+    player1->isMosaic = false;
+    player1->colorMode = OBJCOLOR_16;
+    player1->shape = OBJSHAPE_SQUARE;
+
+    /*
+     *  Configure attribute 1.
+     *
+     *  rotationIndex refers to the loation of affine transformation matrix. We
+     *  set it to a location computed with a macro. OBJSIZE_64, in our case
+     *  since we are making a square sprite, creates a 64x64 sprite.
+     */
+    player1->size = OBJSIZE_64;
+
+    /* 
+     *  Configure attribute 2.
+     * 
+     *  Configure which tiles the sprite will use, which priority layer it will
+     *  be placed onto, which palette the sprite should use, and whether or not
+     *  to show the sprite.
+     */
+    player1->gfxIndex = nextAvailableTileIdx;
+    nextAvailableTileIdx += spritePlayerTilesLen / BYTES_PER_16_COLOR_TILE;
+    player1->priority = OBJPRIORITY_0;
+    player1->palette = playerInfo1->oamId;
+
+    /*******************************************/
+
+    /* Create the player 2 sprite. */
+    static const int PLAYER2_OAM_ID = 2;
+    SpriteInfo * playerInfo2 = &spriteInfo[PLAYER2_OAM_ID];
+    SpriteEntry * player2 = &oam->oamBuffer[PLAYER2_OAM_ID];
+
+    /* Initialize shuttleInfo */
+    playerInfo2->oamId = PLAYER2_OAM_ID;
+    playerInfo2->width = 64;
+    playerInfo2->height = 64;
+    playerInfo2->angle = 0;
+    playerInfo2->entry = player2;
+
+    /*
+     *  Configure attribute 0. 
+     *
+     *  OBJCOLOR_16 will make a 16-color sprite. We specify that we want an
+     *  affine sprite (via isRotateScale) here because we would like to rotate
+     *  the ship.
+     */
+    player2->x = SCREEN_WIDTH - 64 - 10;
+    player2->y = 10;
+    player2->isRotateScale = false;
+    player2->isSizeDouble = false;
+    player2->blendMode = OBJMODE_NORMAL;
+    player2->isMosaic = false;
+    player2->colorMode = OBJCOLOR_16;
+    player2->shape = OBJSHAPE_SQUARE;
+
+    /*
+     *  Configure attribute 1.
+     *
+     *  rotationIndex refers to the loation of affine transformation matrix. We
+     *  set it to a location computed with a macro. OBJSIZE_64, in our case
+     *  since we are making a square sprite, creates a 64x64 sprite.
+     */
+    player2->size = OBJSIZE_64;
+
+    /* 
+     *  Configure attribute 2.
+     * 
+     *  Configure which tiles the sprite will use, which priority layer it will
+     *  be placed onto, which palette the sprite should use, and whether or not
+     *  to show the sprite.
+     */
+    player2->gfxIndex = nextAvailableTileIdx;
+    nextAvailableTileIdx += spritePlayerTilesLen / BYTES_PER_16_COLOR_TILE;
+    player2->priority = OBJPRIORITY_0;
+    player2->palette = playerInfo2->oamId;
+    /*************************************************************/
+
     // copy palette 
     dmaCopyHalfWords(SPRITE_DMA_CHANNEL,
                      spriteBallPal,
@@ -115,11 +218,33 @@ void initSprites(OAMTable * oam, SpriteInfo *spriteInfo) {
                                      COLORS_PER_PALETTE],
                      spriteBallPalLen);
 
+    dmaCopyHalfWords(SPRITE_DMA_CHANNEL,
+                     spritePlayerPal,
+                     &SPRITE_PALETTE[playerInfo1->oamId *
+                                     COLORS_PER_PALETTE],
+                     spritePlayerPalLen);
+
+    dmaCopyHalfWords(SPRITE_DMA_CHANNEL,
+                     spritePlayerPal,
+                     &SPRITE_PALETTE[playerInfo2->oamId *
+                                     COLORS_PER_PALETTE],
+                     spritePlayerPalLen);
+
     // copy sprite
     dmaCopyHalfWords(SPRITE_DMA_CHANNEL,
                      spriteBallTiles,
                      &SPRITE_GFX[ball->gfxIndex * OFFSET_MULTIPLIER],
                      spriteBallTilesLen);
+
+    dmaCopyHalfWords(SPRITE_DMA_CHANNEL,
+                     spritePlayerTiles,
+                     &SPRITE_GFX[player1->gfxIndex * OFFSET_MULTIPLIER],
+                     spritePlayerTilesLen);
+
+    dmaCopyHalfWords(SPRITE_DMA_CHANNEL,
+                     spritePlayerTiles,
+                     &SPRITE_GFX[player2->gfxIndex * OFFSET_MULTIPLIER],
+                     spritePlayerTilesLen);
 
 }
 

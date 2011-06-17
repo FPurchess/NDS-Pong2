@@ -91,9 +91,9 @@ void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
 
         // position ball so that it does not intersect the paddles anymore
         if (hitLeftPaddle) {
-            b->box.pos.x = p1->box.pos.x + p1->box.width + 1;
+            b->box.pos.x = p1->box.pos.x + p1->box.width;
         } else {
-            b->box.pos.x = p2->box.pos.x - b->box.width - 1;
+            b->box.pos.x = p2->box.pos.x - b->box.width;
         }
 
         // sound effect

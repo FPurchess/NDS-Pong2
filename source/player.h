@@ -32,8 +32,6 @@ void initPlayer1(player *p1);
 
 void initPlayer2(player *p2);
 
-void drawPlayer(player *p, SpriteEntry *playerEntry);
-
 /**
  * @param player p
  * @param int key

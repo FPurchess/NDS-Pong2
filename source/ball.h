@@ -16,7 +16,9 @@ typedef struct {
     
     float speed;
     position direction;
-    
+
+    SpriteEntry *sprite;
+
     int sprite_offx;
     int sprite_offy;
 
@@ -30,8 +32,6 @@ typedef struct {
 // Methods
 
 void initBall(ball *b);
-
-void drawBall(ball *b, SpriteEntry *ballEntry);
 
 /**
  * @param ball b

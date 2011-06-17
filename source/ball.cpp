@@ -48,11 +48,6 @@ void initBall(ball *b) {
     b->sfx_scoring.panning = 128;
 }
 
-void drawBall(ball *b, SpriteEntry *ballEntry) {
-    ballEntry->x = b->sprite_offx + b->box.pos.x;
-    ballEntry->y = b->sprite_offy + b->box.pos.y;
-}
-
 /**
  * @param ball b
  * @return void
@@ -116,6 +111,10 @@ void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
         mmEffectEx( &b->sfx_wall );
     }
 
+
+    // Updating sprite position
+    b->sprite.x = b->sprite_offx + b->box.pos.x;
+    b->sprite.y = b->sprite_offy + b->box.pos.y;
 }
 
 void scoring(int player, ball *b, scoreBox *sBox) {

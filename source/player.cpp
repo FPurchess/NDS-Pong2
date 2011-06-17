@@ -28,11 +28,6 @@ void initPlayer2(player *p2) {
 }
 
 
-void drawPlayer(player *p, SpriteEntry *playerEntry) {
-    playerEntry->x = p->sprite_offx + p->box.pos.x;
-    playerEntry->y = p->sprite_offy + p->box.pos.y;
-}
-
 /**
  * @param player p
  * @param int key
@@ -48,6 +43,11 @@ void movePlayer(player *p, int key) {
         p->box.pos.y = 1;
     if (p->box.pos.y + p->box.height >= SCREEN_HEIGHT)
         p->box.pos.y = SCREEN_HEIGHT - p->box.height - 1;
+
+
+    // Updating sprite position
+    p->sprite.x = p->sprite_offx + p->box.pos.x;
+    p->sprite.y = p->sprite_offy + p->box.pos.y;
 }
 
 

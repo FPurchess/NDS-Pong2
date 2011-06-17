@@ -6,6 +6,7 @@
 
 // Includes
 #include "audio.h"
+#include "backgrounds.h"
 #include "sprites.h"
 //#include "ball.h"
 //#include "player.h"
@@ -42,6 +43,7 @@ int main(void) {
 */
     // Initalize Graphics Engine
     initVideo();
+    initBackgrounds();
 
     // Init Sprites
     SpriteInfo spriteInfo[SPRITE_COUNT];
@@ -67,7 +69,7 @@ int main(void) {
         held = keysHeld();
 
         consoleClear();
-        
+
         //movePlayer(&player1, held);
         //movePlayer(&player2, held);
         //moveBall(&gameBall, &player1, &player2, &sBox);

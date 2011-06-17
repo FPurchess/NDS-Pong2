@@ -1,11 +1,6 @@
 #include <nds.h>
 #include "player.h"
 
-// Sprites
-#include "spritePlayer1.h"
-#include "spritePlayer2.h"
-
-
 void initPlayer1(player *p1){
     p1->box.pos.x = 5;
     p1->box.pos.y = 20;
@@ -17,15 +12,6 @@ void initPlayer1(player *p1){
 
     p1->sprite_offx = -27;
     p1->sprite_offy = -2;
-
-    p1->layer = 1;
-
-    p1->sprite_size = SpriteSize_64x64;
-    p1->sprite_format = SpriteColorFormat_256Color;
-    p1->sprite_gfx = oamAllocateGfx(&oamMain, p1->sprite_size, p1->sprite_format);
-
-    dmaCopy(spritePlayer1Pal, SPRITE_PALETTE, spritePlayer1PalLen);
-    dmaCopy(spritePlayer1Tiles, p1->sprite_gfx, spritePlayer1TilesLen);
 }
 
 void initPlayer2(player *p2) {
@@ -39,15 +25,6 @@ void initPlayer2(player *p2) {
 
     p2->sprite_offx = -27;
     p2->sprite_offy = -2;
-
-    p2->layer = 2;
-
-    p2->sprite_size = SpriteSize_64x64;
-    p2->sprite_format = SpriteColorFormat_256Color;
-    p2->sprite_gfx = oamAllocateGfx(&oamMain, p2->sprite_size, p2->sprite_format);
-
-    dmaCopy(spritePlayer2Pal, SPRITE_PALETTE, 512);
-    dmaCopy(spritePlayer2Tiles,p2->sprite_gfx, spritePlayer2TilesLen);
 }
 
 

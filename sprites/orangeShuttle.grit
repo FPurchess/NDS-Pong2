@@ -7,8 +7,5 @@
 # Tile the image
 -gt
 
-# transparent color
--gT ffffff
-
 # Set the bit depth to 4 (16 colors)
 -gB4

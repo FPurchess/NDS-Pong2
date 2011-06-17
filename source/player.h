@@ -16,6 +16,8 @@ typedef struct {
     int sprite_offx;
     int sprite_offy;
     
+    SpriteEntry *sprite;
+
     int layer;
 
     SpriteSize sprite_size;

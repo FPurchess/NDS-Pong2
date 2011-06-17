@@ -7,9 +7,6 @@
 #include "player.h"
 #include "stats.h"
 
-// Sprites
-#include "spriteBall.h"
-
 // Audio
 #include "soundbank.h"
 #include "soundbank_bin.h"
@@ -28,10 +25,6 @@ void initBall(ball *b) {
 
     b->sprite_offx = -2;
     b->sprite_offy = -2;
-
-    b->sprite_size = SpriteSize_16x16;
-    b->sprite_format = SpriteColorFormat_256Color;
-    b->sprite_gfx = oamAllocateGfx(&oamMain, b->sprite_size, b->sprite_format);
 
     // SFX_WALL
     b->sfx_wall.id = SFX_WALL;
@@ -53,15 +46,9 @@ void initBall(ball *b) {
     b->sfx_scoring.handle = 0;
     b->sfx_scoring.volume = 255;
     b->sfx_scoring.panning = 128;
-    
-    dmaCopy(spriteBallPal, SPRITE_PALETTE, spriteBallPalLen);
-    dmaCopy(spriteBallTiles,b->sprite_gfx, spriteBallTilesLen);
 }
 
 void drawBall(ball *b) {
-    oamSet( &oamMain, 0, b->box.pos.x + b->sprite_offx, b->box.pos.y + b->sprite_offy, 0, 1,
-            b->sprite_size, b->sprite_format, b->sprite_gfx,
-            -1,false,false,false,false,false);
 }
 
 /**

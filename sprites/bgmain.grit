@@ -1,0 +1,8 @@
+-gB8
+
+# include palette
+# -p
+
+# Tile the image
+-gt
+-gT 00FFFF

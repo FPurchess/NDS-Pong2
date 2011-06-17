@@ -18,10 +18,6 @@ typedef struct {
     
     int sprite_offx;
     int sprite_offy;
-    
-    SpriteSize sprite_size;
-    SpriteColorFormat sprite_format;
-    u16* sprite_gfx; 
 
     mm_sound_effect sfx_wall;
     mm_sound_effect sfx_panel;

@@ -6,35 +6,57 @@
 
 // Includes
 #include "audio.h"
-#include "ball.h"
-#include "player.h"
-#include "stats.h"
+#include "sprites.h"
+//#include "ball.h"
+//#include "player.h"
+//#include "stats.h"
 
+void initVideo() {
+    vramSetMainBanks(VRAM_A_MAIN_BG_0x06000000,
+                     VRAM_B_MAIN_BG_0x06020000,
+                     VRAM_C_SUB_BG_0x06200000,
+                     VRAM_D_LCD);
+
+    vramSetBankE(VRAM_E_MAIN_SPRITE);
+
+    /*  Set the video mode on the main screen. */
+    videoSetMode(MODE_5_2D | // Set the graphics mode to Mode 5
+                 DISPLAY_BG2_ACTIVE | // Enable BG2 for display
+                 DISPLAY_BG3_ACTIVE | // Enable BG3 for display
+                 DISPLAY_SPR_ACTIVE | // Enable sprites for display
+                 DISPLAY_SPR_1D       // Enable 1D tiled sprites
+                 );
+
+    /*  Set the video mode on the sub screen. */
+    videoSetModeSub(MODE_5_2D | // Set the graphics mode to Mode 5
+                    DISPLAY_BG3_ACTIVE); // Enable BG3 for display
+}
 
 int main(void) {
     int held;
-
+/*
     player player1;
     player player2;
     ball gameBall;
     scoreBox sBox;
-
-    lcdSwap();
-
+*/
     // Initalize Graphics Engine
-    videoSetMode(MODE_0_2D | DISPLAY_BG2_ACTIVE);
-	vramSetMainBanks(VRAM_A_MAIN_SPRITE, VRAM_B_LCD, VRAM_C_LCD, VRAM_D_LCD);
+    initVideo();
 
-    oamInit(&oamMain, SpriteMapping_1D_128, false);
+    // Init Sprites
+    SpriteInfo spriteInfo[SPRITE_COUNT];
+    OAMTable *oam = new OAMTable();
+    initOAMTable(oam);
+    initSprites(oam, spriteInfo);
 
     // Init Audio
     initAudio();
 
     // Init Game-Elements
-    initScoreBox(&sBox);
-	initBall(&gameBall);
-    initPlayer1(&player1);
-    initPlayer2(&player2);
+    //initScoreBox(&sBox);
+	//initBall(&gameBall);
+    //initPlayer1(&player1);
+    //initPlayer2(&player2);
 
     // Initalize IRQ
     irqInit();
@@ -46,17 +68,17 @@ int main(void) {
 
         consoleClear();
         
-        movePlayer(&player1, held);
-        movePlayer(&player2, held);
-        moveBall(&gameBall, &player1, &player2, &sBox);
+        //movePlayer(&player1, held);
+        //movePlayer(&player2, held);
+        //moveBall(&gameBall, &player1, &player2, &sBox);
 
-        drawPlayer(&player1);
-        drawPlayer(&player2);
-        drawBall(&gameBall);
-        drawStats(&sBox);
+        //drawPlayer(&player1);
+        //drawPlayer(&player2);
+        //drawBall(&gameBall);
+        //drawStats(&sBox);
 
         swiWaitForVBlank();
-        oamUpdate(&oamMain);
+        updateOAM(oam);
 	}
 
     return 0;

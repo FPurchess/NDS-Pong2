@@ -87,7 +87,7 @@ void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
 
         // new y direction, keep the sign
         b->direction.y = (b->direction.y > 0) ? 1 : -1;
-        b->direction.y *= 0.5 - 1.5 * relativePos;
+        b->direction.y *= -0.5 + 1.5 * relativePos;
 
         // position ball so that it does not intersect the paddles anymore
         if (hitLeftPaddle) {

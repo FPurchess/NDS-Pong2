@@ -45,7 +45,7 @@ int main(void) {
     initSprites(oam, spriteInfo);
 
     // Init Audio
-    initAudio();
+    //initAudio();
 
     // Init Game-Elements
     initScoreBox(&sBox);
@@ -53,18 +53,12 @@ int main(void) {
     initPlayer1(&player1);
     initPlayer2(&player2);
 
-    // Initalize IRQ
-    irqInit();
-    irqEnable(IRQ_VBLANK);
-
     displayMainBackground();
 	displaySubBackground();
 
     while(1) {
         scanKeys();
         held = keysHeld();
-
-        consoleClear();
 
         movePlayer(&player1, held);
         movePlayer(&player2, held);

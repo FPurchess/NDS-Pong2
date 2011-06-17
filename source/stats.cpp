@@ -4,10 +4,6 @@
 #include "stats.h"
 
 void initScoreBox(scoreBox *sBox) {
-    #ifdef STATS_CONSOLE
-    consoleDemoInit();
-    #endif
-
     sBox->score[0] = 0;
     sBox->score[1] = 0;
 }
@@ -16,9 +12,7 @@ void initScoreBox(scoreBox *sBox) {
  * draws a given scoreBox
  */
 void drawStats(scoreBox *scoreBox) {
-    #ifdef STATS_CONSOLE
-    printf("%d : %d", scoreBox->score[0], scoreBox->score[1]);
-    #endif
+    // TODO print score on tiles ...
 }
 
 /**

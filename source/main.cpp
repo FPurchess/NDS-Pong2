@@ -8,9 +8,9 @@
 #include "audio.h"
 #include "backgrounds.h"
 #include "sprites.h"
-//#include "ball.h"
-//#include "player.h"
-//#include "stats.h"
+#include "ball.h"
+#include "player.h"
+#include "stats.h"
 
 void initVideo() {
     vramSetMainBanks(VRAM_A_MAIN_BG_0x06000000,
@@ -34,12 +34,12 @@ void initVideo() {
 
 int main(void) {
     int held;
-/*
+
     player player1;
     player player2;
-    ball gameBall;
+    ball ball;
     scoreBox sBox;
-*/
+
     powerOn(POWER_ALL_2D);
     lcdSwap();
 
@@ -54,17 +54,17 @@ int main(void) {
     initSprites(oam, spriteInfo);
 
     // Init Audio
-    //initAudio();
+    initAudio();
 
     // Init Game-Elements
-    //initScoreBox(&sBox);
-	//initBall(&gameBall);
-    //initPlayer1(&player1);
-    //initPlayer2(&player2);
+    initScoreBox(&sBox);
+	initBall(&ball);
+    initPlayer1(&player1);
+    initPlayer2(&player2);
 
     // Initalize IRQ
-    //irqInit();
-    //irqEnable(IRQ_VBLANK);
+    irqInit();
+    irqEnable(IRQ_VBLANK);
 
     displayMainBackground();
 	displaySubBackground();
@@ -75,14 +75,9 @@ int main(void) {
 
         consoleClear();
 
-        //movePlayer(&player1, held);
-        //movePlayer(&player2, held);
-        //moveBall(&gameBall, &player1, &player2, &sBox);
-
-        //drawPlayer(&player1);
-        //drawPlayer(&player2);
-        //drawBall(&gameBall);
-        //drawStats(&sBox);
+        movePlayer(&player1, held);
+        movePlayer(&player2, held);
+        moveBall(&ball, &player1, &player2, &sBox);
 
         swiWaitForVBlank();
         updateOAM(oam);

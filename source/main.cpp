@@ -23,7 +23,6 @@ void initVideo() {
     /*  Set the video mode on the main screen. */
     videoSetMode(MODE_5_2D | // Set the graphics mode to Mode 5
                  DISPLAY_BG2_ACTIVE | // Enable BG2 for display
-                 DISPLAY_BG3_ACTIVE | // Enable BG3 for display
                  DISPLAY_SPR_ACTIVE | // Enable sprites for display
                  DISPLAY_SPR_1D       // Enable 1D tiled sprites
                  );
@@ -41,8 +40,8 @@ int main(void) {
     ball gameBall;
     scoreBox sBox;
 */
-
     powerOn(POWER_ALL_2D);
+    lcdSwap();
 
     // Initalize Graphics Engine
     initVideo();
@@ -55,7 +54,7 @@ int main(void) {
     initSprites(oam, spriteInfo);
 
     // Init Audio
-    initAudio();
+    //initAudio();
 
     // Init Game-Elements
     //initScoreBox(&sBox);
@@ -64,8 +63,8 @@ int main(void) {
     //initPlayer2(&player2);
 
     // Initalize IRQ
-    irqInit();
-    irqEnable(IRQ_VBLANK);
+    //irqInit();
+    //irqEnable(IRQ_VBLANK);
 
     displayMainBackground();
 	displaySubBackground();

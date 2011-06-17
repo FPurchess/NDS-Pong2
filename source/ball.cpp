@@ -18,13 +18,10 @@ void initBall(ball *b) {
     b->speed = 2;
     b->box.pos.x = 100;
     b->box.pos.y = 30;
-    b->box.width = 12;
-    b->box.height = 12;
+    b->box.width = 10;
+    b->box.height = 10;
     b->direction.x = 1;
     b->direction.y = 1;
-
-    b->sprite_offx = 2;
-    b->sprite_offy = 2;
 
     // SFX_WALL
     b->sfx_wall.id = SFX_WALL;
@@ -113,8 +110,8 @@ void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
 
 
     // Updating sprite position
-    b->sprite->x = (int)(b->sprite_offx + b->box.pos.x);
-    b->sprite->y = (int)(b->sprite_offy + b->box.pos.y);
+    b->sprite->x = (int)b->box.pos.x;
+    b->sprite->y = (int)b->box.pos.y;
 }
 
 void scoring(int player, ball *b, scoreBox *sBox) {

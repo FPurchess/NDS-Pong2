@@ -113,8 +113,8 @@ void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
 
 
     // Updating sprite position
-    b->sprite->x = b->sprite_offx + b->box.pos.x;
-    b->sprite->y = b->sprite_offy + b->box.pos.y;
+    b->sprite->x = (int)(b->sprite_offx + b->box.pos.x);
+    b->sprite->y = (int)(b->sprite_offy + b->box.pos.y);
 }
 
 void scoring(int player, ball *b, scoreBox *sBox) {

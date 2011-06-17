@@ -5,26 +5,26 @@ void initPlayer1(player *p1){
     p1->box.pos.x = 5;
     p1->box.pos.y = 20;
     p1->box.width = 10;
-    p1->box.height = 60;
+    p1->box.height = 64;
     p1->speed = 2;
     p1->keyUp = KEY_UP;
     p1->keyDown = KEY_DOWN;
 
-    p1->sprite_offx = -27;
-    p1->sprite_offy = -2;
+    p1->sprite_offx = 0;
+    p1->sprite_offy = 0;
 }
 
 void initPlayer2(player *p2) {
     p2->box.pos.x = SCREEN_WIDTH - 10 - 5; // screen width - panel width - offset
     p2->box.pos.y = 20;
     p2->box.width = 10;
-    p2->box.height = 60;
+    p2->box.height = 64;
     p2->speed = 2;
     p2->keyUp = KEY_A;
     p2->keyDown = KEY_B;
 
-    p2->sprite_offx = -27;
-    p2->sprite_offy = -2;
+    p2->sprite_offx = 0;
+    p2->sprite_offy = 0;
 }
 
 
@@ -46,8 +46,8 @@ void movePlayer(player *p, int key) {
 
 
     // Updating sprite position
-    p->sprite->x = p->sprite_offx + p->box.pos.x;
-    p->sprite->y = p->sprite_offy + p->box.pos.y;
+    p->sprite->x = (int)(p->sprite_offx + p->box.pos.x);
+    p->sprite->y = (int)(p->sprite_offy + p->box.pos.y);
 }
 
 

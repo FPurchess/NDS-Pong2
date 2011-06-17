@@ -44,6 +44,13 @@ int main(void) {
     initOAMTable(oam);
     initSprites(oam, spriteInfo);
 
+    static const int BALL_OAM_ID    = 0;
+    static const int PLAYER1_OAM_ID = 1;
+    static const int PLAYER2_OAM_ID = 2;
+    ball.sprite = &oam->oamBuffer[BALL_OAM_ID];
+    player1.sprite = &oam->oamBuffer[PLAYER1_OAM_ID];
+    player2.sprite = &oam->oamBuffer[PLAYER2_OAM_ID];
+
     // Init Audio
     initAudio();
 

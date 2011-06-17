@@ -41,6 +41,9 @@ int main(void) {
     ball gameBall;
     scoreBox sBox;
 */
+
+    powerOn(POWER_ALL_2D);
+
     // Initalize Graphics Engine
     initVideo();
     initBackgrounds();
@@ -64,6 +67,9 @@ int main(void) {
     irqInit();
     irqEnable(IRQ_VBLANK);
 
+    displayMainBackground();
+	displaySubBackground();
+
     while(1) {
         scanKeys();
         held = keysHeld();
@@ -78,9 +84,6 @@ int main(void) {
         //drawPlayer(&player2);
         //drawBall(&gameBall);
         //drawStats(&sBox);
-
-	displayMainBackground();
-	displaySubBackground();
 
         swiWaitForVBlank();
         updateOAM(oam);

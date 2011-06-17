@@ -28,10 +28,9 @@ void initPlayer2(player *p2) {
 }
 
 
-void drawPlayer(player *p) {
-    oamSet( &oamMain, p->layer, p->box.pos.x + p->sprite_offx, p->box.pos.y + p->sprite_offy, p->layer, -1,
-            p->sprite_size, p->sprite_format, p->sprite_gfx,
-            0,false,false,false,false,false);
+void drawPlayer(player *p, SpriteEntry *playerEntry) {
+    playerEntry->x = p->sprite_offx + p->box.pos.x;
+    playerEntry->y = p->sprite_offy + p->box.pos.y;
 }
 
 /**

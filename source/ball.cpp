@@ -48,7 +48,9 @@ void initBall(ball *b) {
     b->sfx_scoring.panning = 128;
 }
 
-void drawBall(ball *b) {
+void drawBall(ball *b, SpriteEntry *ballEntry) {
+    ballEntry->x = b->sprite_offx + b->box.pos.x;
+    ballEntry->y = b->sprite_offy + b->box.pos.y;
 }
 
 /**

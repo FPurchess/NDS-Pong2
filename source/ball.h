@@ -1,6 +1,7 @@
 #ifndef H_BALL
 #define H_BALL
 
+#include <nds.h>
 #include <maxmod9.h>
 
 #include "geometry.h"
@@ -30,7 +31,7 @@ typedef struct {
 
 void initBall(ball *b);
 
-void drawBall(ball *b);
+void drawBall(ball *b, SpriteEntry *ballEntry);
 
 /**
  * @param ball b

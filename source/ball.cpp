@@ -15,7 +15,7 @@
 // Methods
 
 void initBall(ball *b) {
-    b->speed = 1.5;
+    b->speed = 2;
     b->box.pos.x = 100;
     b->box.pos.y = 30;
     b->box.width = 12;
@@ -23,8 +23,8 @@ void initBall(ball *b) {
     b->direction.x = 1;
     b->direction.y = 1;
 
-    b->sprite_offx = -2;
-    b->sprite_offy = -2;
+    b->sprite_offx = 2;
+    b->sprite_offy = 2;
 
     // SFX_WALL
     b->sfx_wall.id = SFX_WALL;

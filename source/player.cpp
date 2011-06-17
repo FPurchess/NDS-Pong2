@@ -46,8 +46,8 @@ void movePlayer(player *p, int key) {
 
 
     // Updating sprite position
-    p->sprite.x = p->sprite_offx + p->box.pos.x;
-    p->sprite.y = p->sprite_offy + p->box.pos.y;
+    p->sprite->x = p->sprite_offx + p->box.pos.x;
+    p->sprite->y = p->sprite_offy + p->box.pos.y;
 }
 
 

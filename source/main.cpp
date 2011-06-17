@@ -64,7 +64,7 @@ int main(void) {
     irqInit();
     irqEnable(IRQ_VBLANK);
 
-	while(1) {
+    while(1) {
         scanKeys();
         held = keysHeld();
 
@@ -78,6 +78,9 @@ int main(void) {
         //drawPlayer(&player2);
         //drawBall(&gameBall);
         //drawStats(&sBox);
+
+	displayMainBackground();
+	displaySubBackground();
 
         swiWaitForVBlank();
         updateOAM(oam);

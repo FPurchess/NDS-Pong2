@@ -31,3 +31,11 @@ void initBackgrounds() {
     REG_BG2Y_SUB = 0;
 }
 
+
+void displayMainBackground() {
+    dmaCopyHalfWords(DMA_CHANNEL, bgmainBitmap, (uint16 *)BG_BMP_RAM(0), bgmainBitmapLen);
+}
+
+void displaySubBackground() {
+    dmaCopyHalfWords(DMA_CHANNEL, bgsubBitmap, (uint16 *)BG_BMP_RAM(0), bgsubBitmapLen);
+}

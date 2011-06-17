@@ -17,7 +17,6 @@ void initAudio(void) {
     mmLoadEffect( SFX_READY );
     mmLoadEffect( SFX_WALL );
 
-	// Start playing module
-    mmSetModuleVolume( 255 );
+	// Start playing background-music
 	mmStart( MOD_BGMUSIC, MM_PLAY_LOOP );
 }

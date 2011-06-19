@@ -96,6 +96,11 @@ void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
             b->box.pos.x = p2->box.pos.x - b->box.width;
         }
 
+        // increase speed of ball
+        if (b->speed < 5) {
+            b->speed += 0.1;
+        }
+
         // sound effect
         mmEffect( SFX_PANEL );
         mmEffectEx( &b->sfx_panel );
@@ -115,10 +120,12 @@ void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
 }
 
 void scoring(int player, ball *b, scoreBox *sBox) {
+    // reset ball to middle of screen
     b->box.pos.x = SCREEN_WIDTH / 2;
     b->box.pos.y = SCREEN_HEIGHT / 2;
     b->direction.x = (b->direction.x > 0) ? -1 : 1;
     b->direction.y = 1;
+    b->speed = 2;
     
     countPoint(sBox, player);    
     

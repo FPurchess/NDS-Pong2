@@ -13,5 +13,5 @@ We assume gcc is configured. Download devkitPRO, devkitARM, libnds and libnds-ma
 
 ## Authors ##
 Tobias Dreyer   
-Oliver Lorenz
+Oliver Lorenz  
 Florian Purchess

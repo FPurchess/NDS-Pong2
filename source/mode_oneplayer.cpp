@@ -22,7 +22,12 @@ void onePlayerInitVideo() {
 }
 
 void movePlayerKI(player *p, int key, ball *b) {
-    
+    if (b->box.pos.y + b->box.height < p->box.pos.y ) {
+        p->box.pos.y -= p->speed;
+    } else if (b->box.pos.y > p->box.pos.y + p->box.height) {
+        p->box.pos.y += p->speed;
+    }
+
     if (p->box.pos.y <= 0)
         p->box.pos.y = 1;
     if (p->box.pos.y + p->box.height >= SCREEN_HEIGHT)

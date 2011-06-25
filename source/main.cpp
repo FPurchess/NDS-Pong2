@@ -5,6 +5,7 @@
 #define STATS_CONSOLE
 
 // Includes
+#include "scene_mainmenu.h"
 #include "audio.h"
 #include "backgrounds.h"
 #include "sprites.h"
@@ -25,6 +26,7 @@ void initVideo() {
 
 int main(void) {
     int held;
+    int gameMode;
 
     player player1;
     player player2;
@@ -33,6 +35,8 @@ int main(void) {
 
     powerOn(POWER_ALL_2D);
     lcdSwap();
+
+    gameMode = mainmenu();
 
     // Initalize Graphics Engine
     initVideo();

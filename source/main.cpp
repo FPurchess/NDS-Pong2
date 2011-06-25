@@ -7,7 +7,7 @@
 #define GAME_MODE_LENGTH 1
 
 typedef struct {
-    char *name;
+    const char *name;
     void (*funcp)(void);
 } funcmap;
 

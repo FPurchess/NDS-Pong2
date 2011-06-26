@@ -4,6 +4,7 @@
 
 // Includes
 #include "audio.h"
+#include "video.h"
 #include "backgrounds.h"
 #include "sprites.h"
 #include "ball.h"
@@ -12,17 +13,6 @@
 
 
 // Methods
-
-void initVideo() {
-    vramSetBankA(VRAM_A_MAIN_BG_0x06000000);
-    vramSetBankB(VRAM_B_MAIN_BG_0x06020000);
-    vramSetBankC(VRAM_C_SUB_BG_0x06200000);
-    vramSetBankD(VRAM_D_LCD);
-    vramSetBankE(VRAM_E_MAIN_SPRITE);
-    
-    videoSetMode(MODE_5_2D | DISPLAY_BG2_ACTIVE | DISPLAY_SPR_ACTIVE | DISPLAY_SPR_1D);
-    videoSetModeSub(MODE_5_2D | DISPLAY_BG3_ACTIVE);
-}
 
 void mode_twoplayer(void) {
     int held = 0;

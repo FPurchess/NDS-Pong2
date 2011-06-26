@@ -20,9 +20,12 @@ void initAudio() {
     mmLoadEffect( SFX_WALL );
 }
 
+void playSfx(mm_sound_effect *sound) {
+    mmEffectEx( sound );
+}
 
 void startMusic() {
-    mmStart( MOD_BGMUSIC, MM_PLAY_LOOP );
+    //mmStart( MOD_BGMUSIC, MM_PLAY_LOOP );
 }
 
 

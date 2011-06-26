@@ -1,11 +1,12 @@
 #include <nds.h>
-//#include <maxmod9.h>
+#include <maxmod9.h>
 #include <stdio.h>
 
 #include "ball.h"
 #include "geometry.h"
 #include "player.h"
 #include "stats.h"
+#include "audio.h"
 
 // Audio
 #include "soundbank.h"
@@ -21,6 +22,27 @@ void initBall(ball *b) {
     b->box.height = 10;
     b->direction.x = 1;
     b->direction.y = 1;
+
+    // SFX_WALL
+    b->sfx_wall.id = SFX_WALL;
+    b->sfx_wall.rate = 0x400/2;
+    b->sfx_wall.handle = 0;
+    b->sfx_wall.volume = 255;
+    b->sfx_wall.panning = 128;
+
+    // SFX_PANEL
+    b->sfx_panel.id = SFX_PANEL;
+    b->sfx_panel.rate = 0x400/2;
+    b->sfx_panel.handle = 0;
+    b->sfx_panel.volume = 255;
+    b->sfx_panel.panning = 128;
+
+    // SFX_READY
+    b->sfx_ready.id = SFX_READY;
+    b->sfx_ready.rate = 0x400/2;
+    b->sfx_ready.handle = 0;
+    b->sfx_ready.volume = 255;
+    b->sfx_ready.panning = 128;
 }
 
 /**
@@ -80,13 +102,13 @@ void moveBall(ball *b, player *p1, player *p2, scoreBox *sBox) {
         }
 
         // sound effect
-        //mmEffect( SFX_PANEL );
+        mmEffectEx( &b->sfx_panel );
     }
     
     // vertical collision
     if (b->box.pos.y <= 0 || b->box.pos.y + b->box.height >= SCREEN_HEIGHT) {
         b->direction.y *= -1;
-        //mmEffect( SFX_WALL );
+        mmEffectEx( &b->sfx_wall );
     }
 
 
@@ -105,5 +127,5 @@ void scoring(int player, ball *b, scoreBox *sBox) {
     
     countPoint(sBox, player);    
     
-    //mmEffect( SFX_READY );
+    //mmEffectEx( &b->sfx_ready );
 }

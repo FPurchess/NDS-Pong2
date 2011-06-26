@@ -24,7 +24,7 @@ typedef struct {
 
     mm_sound_effect sfx_wall;
     mm_sound_effect sfx_panel;
-    mm_sound_effect sfx_scoring;
+    mm_sound_effect sfx_ready;
 } ball;
 
 

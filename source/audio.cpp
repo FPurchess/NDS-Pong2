@@ -18,7 +18,14 @@ void initAudio() {
     mmLoadEffect( SFX_PANEL );
     mmLoadEffect( SFX_READY );
     mmLoadEffect( SFX_WALL );
+}
 
-	// Start playing background-music
-	mmStart( MOD_BGMUSIC, MM_PLAY_LOOP );
+
+void startMusic() {
+    mmStart( MOD_BGMUSIC, MM_PLAY_LOOP );
+}
+
+
+void stopMusic() {
+    mmStop();
 }

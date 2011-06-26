@@ -39,9 +39,6 @@ void mode_twoplayer(void) {
     player1.sprite = &oam->oamBuffer[PLAYER1_OAM_ID];
     player2.sprite = &oam->oamBuffer[PLAYER2_OAM_ID];
 
-    // Init Audio
-    initAudio();
-
     // Init Game-Elements
     initScoreBox(&sBox);
 	initBall(&ball);
@@ -50,6 +47,10 @@ void mode_twoplayer(void) {
 
     displayMainBackground();
 	displaySubBackground();
+
+    // Init Audio
+    initAudio();
+    startMusic();
 
     while(!(held & KEY_START)) {
         scanKeys();
@@ -64,4 +65,5 @@ void mode_twoplayer(void) {
 	}
 
     //@TODO free memory and clear oamBuffer
+    stopMusic();
 }

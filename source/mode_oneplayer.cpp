@@ -11,7 +11,6 @@
 #include "player.h"
 #include "stats.h"
 
-
 // Methods
 
 void mode_oneplayer(void) {
@@ -39,9 +38,6 @@ void mode_oneplayer(void) {
     player1.sprite = &oam->oamBuffer[PLAYER1_OAM_ID];
     player2.sprite = &oam->oamBuffer[PLAYER2_OAM_ID];
 
-    // Init Audio
-    initAudio();
-
     // Init Game-Elements
     initScoreBox(&sBox);
 	initBall(&ball);
@@ -51,6 +47,10 @@ void mode_oneplayer(void) {
     displayMainBackground();
 	displaySubBackground();
 
+    // Init Audio
+    initAudio();
+    startMusic();
+    
     while(!(held & KEY_START)) {
         scanKeys();
         held = keysHeld();
@@ -64,4 +64,5 @@ void mode_oneplayer(void) {
 	}
 
     //@TODO free memory and clear oamBuffer
+    stopMusic();
 }

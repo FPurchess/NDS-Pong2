@@ -1,4 +1,5 @@
 #include <nds.h>
+#include <maxmod9.h>
 #include <stdio.h>
 
 #include "mode_oneplayer.h"
@@ -11,7 +12,7 @@ typedef struct {
     void (*funcp)(void);
 } funcmap;
 
-funcmap gameModes[] = {
+const funcmap gameModes[] = {
     {"1 Player", mode_oneplayer},
     {"2 Player", mode_twoplayer}
 };
@@ -52,7 +53,7 @@ int main(void) {
         } else if (held & KEY_DOWN && mode < GAME_MODE_LENGTH) {
             mode++;
 
-        } else if (held & KEY_B) {
+        } else if (held & KEY_A) {
             gameModes[mode].funcp();
             initMainmenuVideo();
         }

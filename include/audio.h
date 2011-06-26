@@ -6,4 +6,7 @@
 
 void initAudio();
 
+void startMusic();
+void stopMusic();
+
 #endif

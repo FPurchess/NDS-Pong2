@@ -45,3 +45,19 @@ void movePlayer(player *p, int key) {
 }
 
 
+void movePlayerKI(player *p, boundingBox *ball) {
+    if (ball->pos.y + ball->height < p->box.pos.y ) {
+        p->box.pos.y -= p->speed;
+    } else if (ball->pos.y > p->box.pos.y + p->box.height) {
+        p->box.pos.y += p->speed;
+    }
+
+    if (p->box.pos.y <= 0)
+        p->box.pos.y = 1;
+    if (p->box.pos.y + p->box.height >= SCREEN_HEIGHT)
+        p->box.pos.y = SCREEN_HEIGHT - p->box.height - 1;
+
+    // Updating sprite position
+    p->sprite->x = (int)p->box.pos.x;
+    p->sprite->y = (int)p->box.pos.y;
+}

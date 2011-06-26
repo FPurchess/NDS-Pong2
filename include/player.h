@@ -39,4 +39,11 @@ void initPlayer2(player *p2);
  */
 void movePlayer(player *p, int key);
 
+
+/**
+ * @param player p
+ * @return void
+ */
+void movePlayerKI(player *p, boundingBox *ball);
+
 #endif

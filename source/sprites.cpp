@@ -7,7 +7,6 @@
 // Sprites
 #include "spriteBall.h"
 #include "spritePlayer.h"
-//#include "spritePlayer2.h"
 
 
 // Methods

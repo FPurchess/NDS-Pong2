@@ -7,6 +7,8 @@
 #include "bgsub.h"
 
 
+// Methods
+
 void initBackgrounds() {
     // Background
     REG_BG2CNT = BG_BMP16_256x256 | BG_BMP_BASE(0) | BG_PRIORITY(3);

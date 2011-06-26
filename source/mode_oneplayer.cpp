@@ -10,6 +10,9 @@
 #include "player.h"
 #include "stats.h"
 
+
+// Methods
+
 void onePlayerInitVideo() {
     vramSetBankA(VRAM_A_MAIN_BG_0x06000000);
     vramSetBankB(VRAM_B_MAIN_BG_0x06020000);
@@ -19,23 +22,6 @@ void onePlayerInitVideo() {
     
     videoSetMode(MODE_5_2D | DISPLAY_BG2_ACTIVE | DISPLAY_SPR_ACTIVE | DISPLAY_SPR_1D);
     videoSetModeSub(MODE_5_2D | DISPLAY_BG3_ACTIVE);
-}
-
-void movePlayerKI(player *p, int key, ball *b) {
-    if (b->box.pos.y + b->box.height < p->box.pos.y ) {
-        p->box.pos.y -= p->speed;
-    } else if (b->box.pos.y > p->box.pos.y + p->box.height) {
-        p->box.pos.y += p->speed;
-    }
-
-    if (p->box.pos.y <= 0)
-        p->box.pos.y = 1;
-    if (p->box.pos.y + p->box.height >= SCREEN_HEIGHT)
-        p->box.pos.y = SCREEN_HEIGHT - p->box.height - 1;
-
-    // Updating sprite position
-    p->sprite->x = (int)p->box.pos.x;
-    p->sprite->y = (int)p->box.pos.y;
 }
 
 void mode_oneplayer(void) {
@@ -82,7 +68,7 @@ void mode_oneplayer(void) {
         if (held & KEY_START) break;
 
         movePlayer(&player1, held);
-        movePlayerKI(&player2, held, &ball);
+        movePlayerKI(&player2, &ball.box);
         moveBall(&ball, &player1, &player2, &sBox);
 
         swiWaitForVBlank();

@@ -10,6 +10,9 @@
 #include "player.h"
 #include "stats.h"
 
+
+// Methods
+
 void initVideo() {
     vramSetBankA(VRAM_A_MAIN_BG_0x06000000);
     vramSetBankB(VRAM_B_MAIN_BG_0x06020000);

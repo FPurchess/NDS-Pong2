@@ -61,11 +61,9 @@ void mode_twoplayer(void) {
     displayMainBackground();
 	displaySubBackground();
 
-    while(1) {
+    while(!(held & KEY_START)) {
         scanKeys();
         held = keysHeld();
-
-        if (held & KEY_START) break;
 
         movePlayer(&player1, held);
         movePlayer(&player2, held);

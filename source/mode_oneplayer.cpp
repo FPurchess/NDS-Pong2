@@ -64,5 +64,6 @@ void mode_oneplayer(void) {
 	}
 
     //@TODO free memory and clear oamBuffer
+    initOAMTable(oam);
     stopMusic();
 }

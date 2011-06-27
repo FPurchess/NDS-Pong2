@@ -65,5 +65,6 @@ void mode_twoplayer(void) {
 	}
 
     //@TODO free memory and clear oamBuffer
+    initOAMTable(oam);
     stopMusic();
 }

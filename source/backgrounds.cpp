@@ -3,8 +3,11 @@
 #include "backgrounds.h"
 
 // Backgrounds
+#include "splash.h"
 #include "bgmain.h"
 #include "bgsub.h"
+#include "mainmenu0.h"
+#include "mainmenu1.h"
 
 
 // Methods
@@ -33,6 +36,20 @@ void initBackgrounds() {
     REG_BG3Y_SUB = 0;
 }
 
+void displayMainmenu(int mode) {
+    switch (mode) {
+        case 0:
+            dmaCopyHalfWords(DMA_CHANNEL, mainmenu0Bitmap, (uint16 *)BG_BMP_RAM(0), mainmenu0BitmapLen);
+            break;
+        case 1:
+            dmaCopyHalfWords(DMA_CHANNEL, mainmenu1Bitmap, (uint16 *)BG_BMP_RAM(0), mainmenu1BitmapLen);
+            break;
+    }
+}
+
+void displaySplash() {
+    dmaCopyHalfWords(DMA_CHANNEL, splashBitmap, (uint16 *)BG_BMP_RAM_SUB(0), splashBitmapLen);
+}
 
 void displayMainBackground() {
     dmaCopyHalfWords(DMA_CHANNEL, bgmainBitmap, (uint16 *)BG_BMP_RAM(0), bgmainBitmapLen);

@@ -5,6 +5,8 @@ static const int DMA_CHANNEL = 3;
 
 void initBackgrounds();
 
+void displayMainmenu(int mode);
+void displaySplash(); 
 void displayMainBackground(); 
 void displaySubBackground(); 
 
